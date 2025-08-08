@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 :root { 
   --bg:#0b1220; 
   --panel:#0f1722; 
@@ -166,4 +167,174 @@ small {
   text-align: center;
   font-size: 14px;
   color: #ccc;
+=======
+:root { 
+  --bg:#0b1220; 
+  --panel:#0f1722; 
+  --accent:#62d0ff; 
+  --danger:#ff6b6b; 
+  color-scheme: dark; 
+}
+
+body {
+  margin:0;
+  font-family:system-ui,Segoe UI,Roboto,Arial;
+  background:var(--bg);
+  color:#e6eef8;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  padding:14px;
+}
+
+h1 {
+  margin:6px 0;
+  font-size:20px;
+}
+
+/* --- New Grid Layout System --- */
+#gameWrap {
+  display: grid;
+  gap: 12px;
+  align-items: flex-start;
+  position: relative;
+  /* Desktop Layout: 2 columns. Game on left, UI/Preview on right */
+  grid-template-columns: auto 320px;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "game ui"
+    "game preview";
+}
+
+#canvas {
+  grid-area: game;
+  background: linear-gradient(180deg,#0b1220,#06101a);
+  border-radius:10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+#ui {
+  grid-area: ui;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  width:100%; /* Fills the 320px grid column */
+}
+
+#previewWrap {
+  grid-area: preview;
+  width: 240px;
+  height: 160px;
+  border: 2px solid var(--accent);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #000c;
+  box-shadow: 0 0 12px var(--accent);
+  margin: 0; /* Margin is handled by grid-gap */
+  justify-self: center; /* Center horizontally in its grid area */
+}
+
+/* Mobile/Tablet Layout: Single column stack */
+@media (max-width: 768px) {
+  #gameWrap {
+    /* Redefine grid for a single column with specific order */
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "game"
+      "preview"
+      "ui";
+    justify-items: center;
+  }
+
+  #canvas {
+    width: 95vw;
+    height: auto;
+  }
+
+  #ui {
+    width: 95vw;
+  }
+}
+/* --- End of Grid Layout System --- */
+
+
+.card {
+  background: rgba(255,255,255,0.03);
+  padding:12px;
+  border-radius:10px;
+}
+
+.row {
+  display:flex;
+  gap:8px;
+  align-items:center;
+  justify-content:space-between;
+}
+
+button {
+  padding:8px 12px;
+  border-radius:8px;
+  border:0;
+  cursor:pointer;
+  background:var(--accent);
+  color:#02101a;
+  font-weight:700;
+}
+
+.danger {
+  background:var(--danger);
+  color:#fff;
+}
+
+small {
+  color:#99a8c6;
+}
+
+#video {
+  display:none;
+}
+
+.playerLabel {
+  font-weight:700;
+  font-size:14px;
+}
+
+#previewCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  image-rendering: pixelated;
+}
+
+#gameOverOverlay {
+  position: absolute;
+  /* This will cover the #canvas area because #canvas is positioned by the grid */
+  grid-area: game;
+  width: 100%; 
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--danger);
+  font-size: 48px;
+  font-weight: 900;
+  border-radius: 10px;
+  user-select:none;
+  z-index: 100;
+  display:none;
+}
+
+#footer {
+  position: fixed;
+  bottom: 5px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: #ccc;
+>>>>>>> 29e202e40bc45086741fd149f77a752290febd57
 }
